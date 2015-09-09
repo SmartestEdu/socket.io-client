@@ -1651,6 +1651,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
           } else if (xhr.status == 403) {
             self.onError(xhr.responseText);
           } else {
+            self.publish('connect_failed', xhr.responseText, xhr, self.reconnecting );
             self.connecting = false;            
             !self.reconnecting && self.onError(xhr.responseText);
           }
